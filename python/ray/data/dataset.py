@@ -2224,7 +2224,7 @@ Dict[str, List[str]]]): The names of the columns
                 drop_last=drop_last,
             ):
                 if label_column:
-                    label_vals = batch.pop(label_column).values
+                    label_vals = np.array(batch.pop(label_column).tolist())
                     label_tensor = torch.as_tensor(label_vals, dtype=label_column_dtype)
                     if unsqueeze_label_tensor:
                         label_tensor = label_tensor.view(-1, 1)
